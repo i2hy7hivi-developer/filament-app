@@ -26,6 +26,11 @@ class TaskForm
                     ->required()
                     ->columnSpanFull(),
                 DateTimePicker::make('due_date'),
+                Select::make('status')
+                    ->label('Status')
+                    ->options(\App\Models\Task::getStatusLabels())
+                    ->default(\App\Models\Task::STATUS_PENDING)
+                    ->required(),
             ]);
     }
 }
