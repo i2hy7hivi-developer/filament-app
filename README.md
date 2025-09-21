@@ -59,3 +59,64 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Rhythm Dubey ##
+
+## 21/09/2025 ##
+
+Implemented Relation Manager
+
+Post model has following relation
+
+public function comments()
+{
+    return $this->morphMany(Comment::class, 'commentable');
+}
+
+Comment model has following relation
+
+public function commentable()
+{
+    return $this->morphTo();
+}
+
+PS D:\XAMPP\htdocs\filament-app> php artisan make:filament-relation-manager PostResource comments content
+PostResource is the name of the Resource.
+
+comments is the name of the relation method on Post model.
+
+content (or maybe id or something more user-friendly) is the attribute to show as the title of Comment entries (in tables, selects etc.).
+
+ Filament can link this to an existing resource, which will open the resource's pages instead of modals when links are clicked. It will also inherit the resource's configuration.
+
+  Do you want to do this? (yes/no) [no]
+❯ no
+
+  Would you like to use an existing form schema class? (yes/no) [no]
+❯ no
+
+  Should the configuration be generated from the current database columns? (yes/no) [no]
+❯ no
+
+  Should there be a read-only "view" modal on the relation manager? (yes/no) [no]
+❯ no
+
+  Would you like to use an existing table class? (yes/no) [no]
+❯ no
+
+  Does the model use soft-deletes? (yes/no) [no]
+❯ no
+
+  What type of relationship is this?
+  HasMany .......................................... Illuminate\Database\Eloquent\Relations\HasMany  
+  BelongsToMany .............................. Illuminate\Database\Eloquent\Relations\BelongsToMany  
+  MorphMany ...................................... Illuminate\Database\Eloquent\Relations\MorphMany  
+  MorphToMany .................................. Illuminate\Database\Eloquent\Relations\MorphToMany  
+  Other ..................................................................................... other  
+❯ MorphMany
+
+INFO  Filament relation manager [App\Filament\Resources\Posts\RelationManagers\CommentsRelationManager] created successfully.
+
+INFO  Make sure to register the relation in [App\Filament\Resources\Posts\PostResource::getRelations()].
+
+PS D:\XAMPP\htdocs\filament-app> 
