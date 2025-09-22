@@ -27,10 +27,17 @@ class TaskForm
                     ->columnSpanFull(),
                 DateTimePicker::make('due_date'),
                 Select::make('status')
-                    ->label('Status')
-                    ->options(\App\Models\Task::getStatusLabels())
-                    ->default(\App\Models\Task::STATUS_PENDING)
-                    ->required(),
+                    ->searchable()
+                    ->options([
+                        'In Process' => [
+                            'draft' => 'Draft',
+                            'reviewing' => 'Reviewing',
+                        ],
+                        'Reviewed' => [
+                            'published' => 'Published',
+                            'rejected' => 'Rejected',
+                        ],
+                    ]),
             ]);
     }
 }
