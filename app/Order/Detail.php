@@ -2,17 +2,17 @@
 
 namespace App\Order;
 
-use App\Billing\PaymentGateway;
+use App\Billing\PaymentGatewayContract;
 
 class Detail
 {
     public function __construct(
-        private PaymentGateway $paymentGateway
+        private PaymentGatewayContract $bankPaymentGateway
     ){}
 
     public function get(): array
     {
-        $this->paymentGateway->setDiscount(10);
+        $this->bankPaymentGateway->setDiscount(20);
 
         return [
             'name' => 'Rhythm',
