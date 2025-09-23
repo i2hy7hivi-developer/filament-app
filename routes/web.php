@@ -22,4 +22,6 @@ Route::get('parcel', function() {
     );
 });
 
+Route::get('pages', [\App\Http\Controllers\PageController::class, 'index']);
+
 Route::get('process', [\App\Http\Controllers\PaymentGatewayController::class, 'process']);
