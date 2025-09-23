@@ -15,5 +15,6 @@
             </tr>
         @endforeach
     </table>
+    {{ $pages->appends(request()->input())->links() }}
 </body>
 </html>

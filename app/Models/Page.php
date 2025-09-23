@@ -17,9 +17,10 @@ class Page extends Model
             ->send(Page::query())
             ->through([
                 app(\App\QueryFilters\Published::class),
-                app(\App\QueryFilters\Sort::class)
+                app(\App\QueryFilters\Sort::class),
+                app(\App\QueryFilters\MaxCount::class)
             ])
             ->thenReturn()
-            ->get();
+            ->paginate(7);
     }
 }
