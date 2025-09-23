@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Billing\BankPaymentGateway;
 use App\Billing\CreditPaymentGateway;
 use App\Billing\PaymentGatewayContract;
+use App\DeliveryService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -27,6 +28,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        $this->app->singleton('Parcel', function () {
+            return new DeliveryService('India', 'Speed Post');
+        });
     }
 }
